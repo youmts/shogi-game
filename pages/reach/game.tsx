@@ -1,6 +1,9 @@
 import React from "react"
 import * as koma from "../../lib/koma"
 
+const gameWidth: number = 735
+const gameHeight: number = 800
+
 const komaAreaX: number = 25
 const komaAreaY: number = 21
 
@@ -51,23 +54,23 @@ function ShogiBan(props: {width: number, height: number}) {
   )
 
   return (
-    <svg version="1.1"
-      baseProfile="full"
-      width={props.width} height={props.height}
-      xmlns="http://www.w3.org/2000/svg">
+    <>
       <image href="/images/shogi_ban.png" x="0" y="0" width={props.width} height={props.height} />
       {komaItems}
-    </svg>
+    </>
   )
 }
 
 export default function Game() {
-  const width: number = 735
-  const height: number = 800
 
   return (
     <>
-      <ShogiBan width={width} height={height} />
+      <svg version="1.1"
+        baseProfile="full"
+        width={gameWidth} height={gameHeight}
+        xmlns="http://www.w3.org/2000/svg">
+        <ShogiBan width={gameWidth} height={gameHeight} />
+      </svg>
     </>
   )
 }
