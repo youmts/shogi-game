@@ -11,8 +11,11 @@ const komaAreaY: number = 21
 const komaWidth: number = 76
 const komaHeight: number = 83.5
 
+let komaIdMax: number = 0
+
 type Koma = {
-  type: koma.KomaType,
+  id: number
+  type: koma.KomaType
   x: number // 0-8
   y: number // 0-8
   isAlly: boolean
@@ -31,7 +34,6 @@ function KomaPiece(props: {koma: Koma}) {
     }
 
     return (
-      // TODO: not use index
       <image href={koma.type.image}
         x={left}
         y={top}
@@ -44,14 +46,21 @@ function KomaPiece(props: {koma: Koma}) {
 
 function ShogiBan(props: {width: number, height: number}) {
   const komaList: Koma[] = [
-    { type: koma.Fuhyo, x: 0, y: 0, isAlly: true},
-    { type: koma.Fuhyo, x: 1, y: 0, isAlly: false},
-    { type: koma.Osho, x: 8, y: 8, isAlly: false},
-    { type: koma.Fuhyo, x: 7, y: 8, isAlly: true},
+    { id: komaIdMax++, type: koma.Fuhyo, x: 0, y: 0, isAlly: true},
+    { id: komaIdMax++, type: koma.Fuhyo, x: 1, y: 0, isAlly: false},
+    { id: komaIdMax++, type: koma.Kyosha, x: 2, y: 0, isAlly: false},
+    { id: komaIdMax++, type: koma.Keima, x: 3, y: 0, isAlly: false},
+    { id: komaIdMax++, type: koma.Ginsho, x: 4, y: 0, isAlly: false},
+    { id: komaIdMax++, type: koma.Kinsho, x: 5, y: 0, isAlly: false},
+    { id: komaIdMax++, type: koma.Kakugyo, x: 6, y: 0, isAlly: false},
+    { id: komaIdMax++, type: koma.Hisha, x: 7, y: 0, isAlly: false},
+    { id: komaIdMax++, type: koma.Gyokusho, x: 8, y: 0, isAlly: false},
+    { id: komaIdMax++, type: koma.Osho, x: 8, y: 8, isAlly: false},
+    { id: komaIdMax++, type: koma.Fuhyo, x: 7, y: 8, isAlly: true},
   ]
 
   var komaItems = komaList.map(
-    (koma, index) => <KomaPiece key={index} koma={koma} />
+    (koma) => <KomaPiece key={koma.id} koma={koma} />
   )
 
   return (
