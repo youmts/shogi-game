@@ -1,10 +1,41 @@
+import React from "react"
 import * as koma from "../../lib/koma"
+
+const komaAreaX: number = 25
+const komaAreaY: number = 21
+
+const komaWidth: number = 76
+const komaHeight: number = 83.5
 
 type Koma = {
   type: koma.KomaType,
   x: number // 0-8
   y: number // 0-8
   isAlly: boolean
+}
+
+
+function KomaPiece(props: {koma: Koma}) {
+    const {koma} = props
+    const left = komaAreaX + koma.x * komaWidth
+    const top = komaAreaY + koma.y * komaHeight
+    const transform = koma.isAlly ? "" : `rotate(180, ${left + komaWidth * 0.5 }, ${top + komaHeight * 0.5 + 2 })`
+
+    // TODO: delete this
+    function handleClick(event: React.MouseEvent<SVGElement, MouseEvent>) {
+      alert(`clicked! : ${koma.type.image}`)
+    }
+
+    return (
+      // TODO: not use index
+      <image href={koma.type.image}
+        x={left}
+        y={top}
+        width={komaWidth} height={komaHeight}
+        transform={transform}
+        onClick={handleClick}
+      />
+    )
 }
 
 function ShogiBan(props: {width: number, height: number}) {
@@ -15,27 +46,8 @@ function ShogiBan(props: {width: number, height: number}) {
     { type: koma.Fuhyo, x: 7, y: 8, isAlly: true},
   ]
 
-  const komaAreaX: number = 25
-  const komaAreaY: number = 21
-
-  const komaWidth: number = 76
-  const komaHeight: number = 83.5
-
   var komaItems = komaList.map(
-    (koma, index) => {
-      const left = komaAreaX + koma.x * komaWidth
-      const top = komaAreaY + koma.y * komaHeight
-      const transform = koma.isAlly ? "" : `rotate(180, ${left + komaWidth * 0.5 }, ${top + komaHeight * 0.5 + 2 })`
-      return (
-        // TODO: not use index
-        <image key={index} href={koma.type.image}
-          x={left}
-          y={top}
-          width={komaWidth} height={komaHeight}
-          transform={transform}
-        />
-      )
-    }
+    (koma, index) => <KomaPiece key={index} koma={koma} />
   )
 
   return (
