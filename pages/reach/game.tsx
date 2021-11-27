@@ -1,5 +1,6 @@
 import React from "react"
 import * as koma from "../../lib/koma"
+import styles from "./game.module.css"
 
 const gameWidth: number = 735
 const gameHeight: number = 800
@@ -63,14 +64,18 @@ function ShogiBan(props: {width: number, height: number}) {
 
 export default function Game() {
 
+  const viewBox = `0 0 ${gameWidth} ${gameHeight}`
+
   return (
-    <>
-      <svg version="1.1"
+    <div className={styles.svg_container}>
+      <svg
+        className={styles.svg_content}
+        version="1.1"
         baseProfile="full"
-        width={gameWidth} height={gameHeight}
+        viewBox={viewBox}
         xmlns="http://www.w3.org/2000/svg">
         <ShogiBan width={gameWidth} height={gameHeight} />
       </svg>
-    </>
+    </div>
   )
 }
