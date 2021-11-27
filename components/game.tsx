@@ -1,5 +1,5 @@
 import React from "react"
-import * as koma from "../../lib/koma"
+import * as koma from "../lib/koma"
 import styles from "./game.module.css"
 
 const gameWidth: number = 735
