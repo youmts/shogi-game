@@ -1,5 +1,28 @@
 import React from 'react'
+import { nonNullable } from '../lib/non_nullable'
+import {
+  無n,
+  歩a,
+  香a,
+  桂a,
+  銀a,
+  金a,
+  角a,
+  飛a,
+  王a,
+  玉a,
+  歩b,
+  香b,
+  桂b,
+  銀b,
+  金b,
+  角b,
+  飛b,
+  王b,
+  玉b,
+} from '../lib/koma'
 import * as koma from '../lib/koma'
+
 import styles from './game.module.css'
 
 const gameWidth = 735
@@ -10,16 +33,6 @@ const komaAreaY = 21
 
 const komaWidth = 76
 const komaHeight = 83.5
-
-let komaIdMax = 0
-
-type Koma = {
-  id: number
-  type: koma.KomaType
-  x: number // 0-8
-  y: number // 0-8
-  isAlly: boolean
-}
 
 function KomaPiece(props: { koma: Koma }) {
   const { koma } = props
@@ -47,24 +60,45 @@ function KomaPiece(props: { koma: Koma }) {
   )
 }
 
+type Koma = {
+  id: number
+  type: koma.KomaType
+  x: number // 0-8
+  y: number // 0-8
+  isAlly: boolean
+}
+
 function ShogiBan(props: { width: number; height: number }) {
-  const komaList: Koma[] = [
-    { id: komaIdMax++, type: koma.Fuhyo, x: 0, y: 0, isAlly: true },
-    { id: komaIdMax++, type: koma.Fuhyo, x: 1, y: 0, isAlly: false },
-    { id: komaIdMax++, type: koma.Kyosha, x: 2, y: 0, isAlly: false },
-    { id: komaIdMax++, type: koma.Keima, x: 3, y: 0, isAlly: false },
-    { id: komaIdMax++, type: koma.Ginsho, x: 4, y: 0, isAlly: false },
-    { id: komaIdMax++, type: koma.Kinsho, x: 5, y: 0, isAlly: false },
-    { id: komaIdMax++, type: koma.Kakugyo, x: 6, y: 0, isAlly: false },
-    { id: komaIdMax++, type: koma.Hisha, x: 7, y: 0, isAlly: false },
-    { id: komaIdMax++, type: koma.Gyokusho, x: 8, y: 0, isAlly: false },
-    { id: komaIdMax++, type: koma.Osho, x: 8, y: 8, isAlly: false },
-    { id: komaIdMax++, type: koma.Fuhyo, x: 7, y: 8, isAlly: true },
+  /* prettier-ignore */
+  const komaList: ({type: koma.KomaType, isAlly: boolean} | null)[][] = [
+    [歩a, 香a, 桂a, 銀a, 金a, 角a, 飛a, 王a, 玉a], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [歩b, 香b, 桂b, 銀b, 金b, 角b, 飛b, 王b, 玉b], 
   ]
 
-  const komaItems = komaList.map((koma) => (
-    <KomaPiece key={koma.id} koma={koma} />
-  ))
+  let komaIdMax = 0
+
+  const komaItems = komaList
+    .flatMap((ks, y) =>
+      ks.map((k, x) =>
+        k == null
+          ? null
+          : {
+              id: komaIdMax++,
+              x: x,
+              y: y,
+              ...k,
+            },
+      ),
+    )
+    .filter(nonNullable)
+    .map((koma) => <KomaPiece key={koma.id} koma={koma} />)
 
   return (
     <>
