@@ -71,15 +71,15 @@ type Koma = {
 function ShogiBan(props: { width: number; height: number }) {
   /* prettier-ignore */
   const komaList: ({type: koma.KomaType, isAlly: boolean} | null)[][] = [
-    [歩a, 香a, 桂a, 銀a, 金a, 角a, 飛a, 王a, 玉a], 
+    [無n, 飛a, 無n, 金a, 無n, 無n, 無n, 無n, 香a], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 金a, 無n, 無n], 
+    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [無n, 無n, 無n, 角b, 無n, 無n, 無n, 無n, 無n], 
     [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
     [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
     [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
     [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
     [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
-    [歩b, 香b, 桂b, 銀b, 金b, 角b, 飛b, 王b, 玉b], 
   ]
 
   let komaIdMax = 0
