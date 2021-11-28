@@ -1,7 +1,7 @@
 import React from 'react'
 import { nonNullable } from '../lib/non_nullable'
 import {
-  無n,
+  口n,
   歩a,
   香a,
   桂a,
@@ -71,15 +71,15 @@ type Koma = {
 function ShogiBan(props: { width: number; height: number }) {
   /* prettier-ignore */
   const komaList: ({type: koma.KomaType, isAlly: boolean} | null)[][] = [
-    [無n, 飛a, 無n, 金a, 無n, 無n, 無n, 無n, 香a], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 金a, 無n, 無n], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
-    [無n, 無n, 無n, 角b, 無n, 無n, 無n, 無n, 無n], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
-    [無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n, 無n], 
+    [口n, 飛a, 口n, 金a, 口n, 口n, 口n, 口n, 香a],
+    [口n, 口n, 口n, 口n, 口n, 口n, 金a, 口n, 口n],
+    [口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n],
+    [口n, 口n, 口n, 角b, 口n, 口n, 口n, 口n, 口n],
+    [口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n],
+    [口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n],
+    [口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n],
+    [口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n],
+    [口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n, 口n],
   ]
 
   let komaIdMax = 0

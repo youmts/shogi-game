@@ -12,7 +12,7 @@ export const Hisha: KomaType = { image: '/images/syougi03_hisya.png' }
 export const Gyokusho: KomaType = { image: '/images/syougi02_gyokusyou.png' }
 export const Osho: KomaType = { image: '/images/syougi01_ousyou.png' }
 
-export const 無n = null
+export const 口n = null
 export const 歩b = { type: Fuhyo, isAlly: true }
 export const 香b = { type: Kyosha, isAlly: true }
 export const 桂b = { type: Keima, isAlly: true }
